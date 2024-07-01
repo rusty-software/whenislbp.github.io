@@ -6,35 +6,68 @@
     <title>Countdown to August 1, 2024</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #f06, #4a90e2);
             margin: 0;
+            color: white;
         }
         .countdown {
             text-align: center;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
         .countdown h1 {
-            margin: 0;
-            font-size: 24px;
+            margin: 0 0 20px;
+            font-size: 32px;
+            font-weight: bold;
         }
-        .countdown .time {
-            font-size: 2em;
-            margin: 10px 0;
+        .time {
+            display: flex;
+            justify-content: space-around;
+            font-size: 2.5em;
+        }
+        .time div {
+            margin: 0 10px;
+        }
+        .label {
+            font-size: 0.5em;
+            text-transform: uppercase;
+            margin-top: 10px;
+            color: #ddd;
         }
     </style>
 </head>
 <body>
     <div class="countdown">
         <h1>Countdown to LBP: August 1, 2024</h1>
-        <div class="time" id="time"></div>
+        <div class="time" id="time">
+            <div>
+                <span id="weeks">0</span>
+                <div class="label">Weeks</div>
+            </div>
+            <div>
+                <span id="days">0</span>
+                <div class="label">Days</div>
+            </div>
+            <div>
+                <span id="hours">0</span>
+                <div class="label">Hours</div>
+            </div>
+            <div>
+                <span id="minutes">0</span>
+                <div class="label">Minutes</div>
+            </div>
+            <div>
+                <span id="seconds">0</span>
+                <div class="label">Seconds</div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -49,9 +82,11 @@
             const minutes = Math.floor(totalSeconds / 60) % 60;
             const seconds = Math.floor(totalSeconds % 60);
 
-            document.getElementById('time').innerHTML = `
-                ${weeks} weeks, ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds
-            `;
+            document.getElementById('weeks').textContent = weeks;
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
         }
 
         updateCountdown();
