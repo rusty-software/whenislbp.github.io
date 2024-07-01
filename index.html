@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to August 1, 2024</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .countdown {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .countdown h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .countdown .time {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown">
+        <h1>Countdown to August 1, 2024</h1>
+        <div class="time" id="time"></div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            const targetDate = new Date('August 1, 2024 00:00:00');
+            const totalSeconds = (targetDate - now) / 1000;
+
+            const weeks = Math.floor(totalSeconds / (60 * 60 * 24 * 7));
+            const days = Math.floor(totalSeconds / (60 * 60 * 24)) % 7;
+            const hours = Math.floor(totalSeconds / 3600) % 24;
+            const minutes = Math.floor(totalSeconds / 60) % 60;
+            const seconds = Math.floor(totalSeconds % 60);
+
+            document.getElementById('time').innerHTML = `
+                ${weeks} weeks, ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds
+            `;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
