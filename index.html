@@ -1,117 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Countdown to LBP</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            color: white;
-            background: url('https://images.unsplash.com/photo-1526095179574-86e545346ae6') no-repeat center center fixed;
-            background-size: cover;
-        }
-        .countdown {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            width: 90%;
-            max-width: 600px;
-        }
+      body {
+        font-family: "Arial", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: white;
+        background: url("https://images.unsplash.com/photo-1526095179574-86e545346ae6")
+          no-repeat center center fixed;
+        background-size: cover;
+      }
+      .unknown {
+        background: url("https://images.unsplash.com/photo-1661152900445-e67ccd781141")
+          no-repeat center center fixed;
+      }
+      .countdown {
+        text-align: center;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        width: 90%;
+        max-width: 600px;
+      }
+      .countdown h1 {
+        margin: 0 0 20px;
+        font-size: 2em;
+        font-weight: bold;
+      }
+      .time {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        font-size: 1.5em;
+      }
+      .time div {
+        margin: 10px;
+      }
+      .label {
+        font-size: 0.5em;
+        text-transform: uppercase;
+        margin-top: 5px;
+        color: #ddd;
+      }
+      @media (min-width: 600px) {
         .countdown h1 {
-            margin: 0 0 20px;
-            font-size: 2em;
-            font-weight: bold;
+          font-size: 2.5em;
         }
         .time {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            font-size: 1.5em;
+          font-size: 2em;
         }
         .time div {
-            margin: 10px;
+          margin: 15px;
         }
-        .label {
-            font-size: 0.5em;
-            text-transform: uppercase;
-            margin-top: 5px;
-            color: #ddd;
-        }
-        @media (min-width: 600px) {
-            .countdown h1 {
-                font-size: 2.5em;
-            }
-            .time {
-                font-size: 2em;
-            }
-            .time div {
-                margin: 15px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="countdown">
-        <h1>Countdown to LBP: August 1, 2024</h1>
-        <div class="time" id="time">
-            <div id="weeks-container">
-                <span id="weeks">0</span>
-                <div class="label">Weeks</div>
-            </div>
-            <div>
-                <span id="days">0</span>
-                <div class="label">Days</div>
-            </div>
-            <div>
-                <span id="hours">0</span>
-                <div class="label">Hours</div>
-            </div>
-            <div>
-                <span id="minutes">0</span>
-                <div class="label">Minutes</div>
-            </div>
-            <div>
-                <span id="seconds">0</span>
-                <div class="label">Seconds</div>
-            </div>
+      <h1 id="status">Countdown to LBP: August 1, 2024, 16:00</h1>
+      <div class="time" id="time">
+        <div id="weeks-container">
+          <span id="weeks">0</span>
+          <div class="label">Weeks</div>
         </div>
+        <div id="days-container">
+          <span id="days">0</span>
+          <div class="label">Days</div>
+        </div>
+        <div id="hours-container">
+          <span id="hours">0</span>
+          <div class="label">Hours</div>
+        </div>
+        <div id="minutes-container">
+          <span id="minutes">0</span>
+          <div class="label">Minutes</div>
+        </div>
+        <div id="seconds-container">
+          <span id="seconds">0</span>
+          <div class="label">Seconds</div>
+        </div>
+      </div>
     </div>
 
     <script>
-        function updateCountdown() {
-            const now = new Date();
-            const targetDate = new Date('August 1, 2024 00:00:00');
-            const totalSeconds = (targetDate - now) / 1000;
+      function updateCountdown() {
+        const now = new Date();
+        const startDate = new Date("August 1, 2024 16:00:00");
+        const endDate = new Date("August 4, 2024 11:00:00");
 
-            const weeks = Math.floor(totalSeconds / (60 * 60 * 24 * 7));
-            const days = Math.floor(totalSeconds / (60 * 60 * 24)) % 7;
-            const hours = Math.floor(totalSeconds / 3600) % 24;
-            const minutes = Math.floor(totalSeconds / 60) % 60;
-            const seconds = Math.floor(totalSeconds % 60);
-
-            if (weeks > 0) {
-                document.getElementById('weeks').textContent = weeks;
-                document.getElementById('weeks-container').style.display = 'block';
-            } else {
-                document.getElementById('weeks-container').style.display = 'none';
-            }
-
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = minutes;
-            document.getElementById('seconds').textContent = seconds;
+        if (startDate <= now && now <= endDate) {
+          document.getElementById("status").textContent = "It's happening!";
+          document.body.style.background =
+            "url('https://images.unsplash.com/photo-1518316974705-e5c4a6ee2374')";
+          document.body.style.backgroundSize = "cover";
+          document.getElementById("time").style.display = "none";
+          return;
         }
 
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
+        if (now > endDate) {
+          document.getElementById("status").textContent = "Who knows?";
+          document.body.style.background =
+            "url('https://images.unsplash.com/photo-1661152900445-e67ccd781141')";
+          document.body.style.backgroundSize = "cover";
+          document.getElementById("time").style.display = "none";
+          return;
+        }
+
+        const totalSeconds = (startDate - now) / 1000;
+
+        const weeks = Math.floor(totalSeconds / (60 * 60 * 24 * 7));
+        const days = Math.floor(totalSeconds / (60 * 60 * 24)) % 7;
+        const hours = Math.floor(totalSeconds / 3600) % 24;
+        const minutes = Math.floor(totalSeconds / 60) % 60;
+        const seconds = Math.floor(totalSeconds % 60);
+
+        document.getElementById("weeks-container").style.display = "none";
+        document.getElementById("days-container").style.display = "none";
+        document.getElementById("hours-container").style.display = "none";
+        document.getElementById("minutes-container").style.display = "none";
+        document.getElementById("seconds-container").style.display = "none";
+        if (weeks > 0) {
+          document.getElementById("weeks").textContent = weeks;
+          document.getElementById("weeks-container").style.display = "block";
+        }
+        if (weeks > 0 || days > 0) {
+          document.getElementById("days").textContent = days;
+          document.getElementById("days-container").style.display = "block";
+        }
+        if (weeks > 0 || days > 0 || hours > 0) {
+          document.getElementById("hours").textContent = hours;
+          document.getElementById("hours-container").style.display = "block";
+        }
+        if (weeks > 0 || days > 0 || hours > 0 || minutes > 0) {
+          document.getElementById("minutes").textContent = minutes;
+          document.getElementById("minutes-container").style.display = "block";
+        }
+        if (totalSeconds > 0) {
+          document.getElementById("seconds").textContent = seconds;
+          document.getElementById("seconds-container").style.display = "block";
+        }
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
     </script>
-</body>
+  </body>
 </html>
