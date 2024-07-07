@@ -62,7 +62,7 @@
     <div class="countdown">
         <h1>Countdown to LBP: August 1, 2024</h1>
         <div class="time" id="time">
-            <div>
+            <div id="weeks-container">
                 <span id="weeks">0</span>
                 <div class="label">Weeks</div>
             </div>
@@ -97,7 +97,13 @@
             const minutes = Math.floor(totalSeconds / 60) % 60;
             const seconds = Math.floor(totalSeconds % 60);
 
-            document.getElementById('weeks').textContent = weeks;
+            if (weeks > 0) {
+                document.getElementById('weeks').textContent = weeks;
+                document.getElementById('weeks-container').style.display = 'block';
+            } else {
+                document.getElementById('weeks-container').style.display = 'none';
+            }
+
             document.getElementById('days').textContent = days;
             document.getElementById('hours').textContent = hours;
             document.getElementById('minutes').textContent = minutes;
