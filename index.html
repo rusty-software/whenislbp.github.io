@@ -91,6 +91,33 @@
           margin: 15px;
         }
       }
+      .confetti {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1000;
+      }
+      .confetti-piece {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-size: cover;
+        opacity: 0;
+        animation: confetti-fall 15s linear forwards;
+      }
+      @keyframes confetti-fall {
+        0% {
+          opacity: 1;
+          transform: translateY(0) rotate(0deg);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
     </style>
   </head>
   <body>
@@ -126,6 +153,9 @@
       <img src="lbp2024.png" alt="LBP 2024" />
       <img src="lbp2024.png" alt="LBP 2024" />
     </div>
+
+    <!-- Confetti Container -->
+    <div class="confetti" id="confetti"></div>
 
     <script>
       function updateCountdown() {
@@ -184,6 +214,37 @@
           document.getElementById("seconds").textContent = seconds;
           document.getElementById("seconds-container").style.display = "block";
         }
+        if (seconds % 30 === 0) {
+          startConfetti();
+        }
+      }
+
+      function startConfetti() {
+        const confettiImages = [
+          "./lbp2024.png",
+          "./weedwater01.png",
+          "./scorpion01.png",
+        ];
+
+        const confettiContainer = document.getElementById("confetti");
+        for (let i = 0; i < 100; i++) {
+          const confettiPiece = document.createElement("div");
+          confettiPiece.classList.add("confetti-piece");
+          confettiPiece.style.left = Math.random() * 100 + "vw";
+          confettiPiece.style.animationDelay = Math.random() * 5 + "s";
+          confettiPiece.style.animationDuration = Math.random() * 5 + 10 + "s";
+
+          // Randomly select a confetti image
+          const randomImage =
+            confettiImages[Math.floor(Math.random() * confettiImages.length)];
+          confettiPiece.style.backgroundImage = `url(${randomImage})`;
+
+          confettiContainer.appendChild(confettiPiece);
+        }
+        // Remove confetti after 15 seconds
+        setTimeout(() => {
+          confettiContainer.innerHTML = "";
+        }, 15000);
       }
 
       updateCountdown();
