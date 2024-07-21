@@ -22,6 +22,7 @@
       body {
         font-family: "Arial", sans-serif;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
@@ -35,7 +36,8 @@
         background: url("https://images.unsplash.com/photo-1661152900445-e67ccd781141")
           no-repeat center center fixed;
       }
-      .countdown {
+      .countdown,
+      .images {
         text-align: center;
         background: rgba(0, 0, 0, 0.7);
         padding: 20px;
@@ -43,8 +45,10 @@
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         width: 90%;
         max-width: 600px;
+        margin-bottom: 20px;
       }
-      .countdown h1 {
+      .countdown h1,
+      .images h1 {
         margin: 0 0 20px;
         font-size: 2em;
         font-weight: bold;
@@ -52,17 +56,29 @@
       .time {
         display: flex;
         justify-content: space-around;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         font-size: 1.5em;
       }
       .time div {
         margin: 10px;
+        flex: 1; /* Ensure items shrink if necessary */
+        min-width: 50px; /* Set a minimum width for each item */
+        text-align: center; /* Center the text within each div */
       }
       .label {
         font-size: 0.5em;
         text-transform: uppercase;
         margin-top: 5px;
         color: #ddd;
+      }
+      .images {
+        display: flex;
+        justify-content: space-between;
+      }
+      .images img {
+        width: 18%;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       }
       @media (min-width: 600px) {
         .countdown h1 {
@@ -79,7 +95,7 @@
   </head>
   <body>
     <div class="countdown">
-      <h1 id="status">🦂 Countdown to LBP: August 1, 2024, 16:00 🦂</h1>
+      <h1 id="status">Countdown to LBP: 2024-08-01 16:00 CDT</h1>
       <div class="time" id="time">
         <div id="weeks-container">
           <span id="weeks">0</span>
@@ -102,6 +118,13 @@
           <div class="label">Seconds</div>
         </div>
       </div>
+    </div>
+    <div class="images">
+      <img src="scorpion01.png" alt="scorpion" />
+      <img src="weedwater01.png" alt="weedwater" />
+      <img src="lbp2024.png" alt="LBP 2024" />
+      <img src="lbp2024.png" alt="LBP 2024" />
+      <img src="lbp2024.png" alt="LBP 2024" />
     </div>
 
     <script>
