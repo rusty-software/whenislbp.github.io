@@ -146,6 +146,7 @@
         </div>
       </div>
     </div>
+    <audio id="anthem-player" src="lbp-ai-song.mp3" preload="auto"></audio>
     <div class="images">
       <img src="scorpion01.png" alt="scorpion" />
       <img src="weedwater01.png" alt="weedwater" />
@@ -246,7 +247,10 @@
           confettiContainer.innerHTML = "";
         }, 15000);
       }
-
+      document.querySelector(".images").addEventListener("click", () => {
+        const audio = document.getElementById("anthem-player");
+        audio.play();
+      });
       updateCountdown();
       setInterval(updateCountdown, 1000);
     </script>
