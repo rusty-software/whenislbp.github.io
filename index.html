@@ -32,6 +32,24 @@
           no-repeat center center fixed;
         background-size: cover;
       }
+      a {
+        color: red;
+        font-family: helvetica;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      a:active {
+        color: orange;
+      }
+
+      a:visited {
+        color: darkorange;
+      }
       .unknown {
         background: url("https://images.unsplash.com/photo-1661152900445-e67ccd781141")
           no-repeat center center fixed;
@@ -123,6 +141,11 @@
   <body>
     <div class="countdown">
       <h1 id="status">Countdown to LBP: 2025-08-07 16:00 CDT</h1>
+      <h3>
+        <a href="https://www.vrbo.com/3101128" target="_blank"
+          >Venue: Blooming Grove</a
+        >
+      </h3>
       <div class="time" id="time">
         <div id="weeks-container">
           <span id="weeks">0</span>
