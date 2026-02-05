@@ -13,7 +13,7 @@
     />
     <meta
       property="og:description"
-      content="LBP represents a commitment to lifelong fellowship, a yearly coming together to celebrate, commiserate, and masticate. This year's LBP is August 7-10, 2025"
+      content="LBP represents a commitment to lifelong fellowship, a yearly coming together to celebrate, commiserate, and masticate. This year's LBP is July 9 - 12, 2026"
     />
     <meta property="og:image" content="https://whenislbp.net/lbpq4-01.png" />
     <meta property="og:url" content="https://whenislbp.net" />
@@ -28,7 +28,7 @@
         height: 100vh;
         margin: 0;
         color: white;
-        background: url("https://images.unsplash.com/photo-1526095179574-86e545346ae6")
+        background: url("https://images.unsplash.com/photo-1589303204158-c33028c33117")
           no-repeat center center fixed;
         background-size: cover;
       }
@@ -140,10 +140,12 @@
   </head>
   <body>
     <div class="countdown">
-      <h1 id="status">Countdown to LBP: 2025-08-07 15:00 CDT</h1>
+      <h1 id="status">Countdown to LBP: 2026-07-09 15:00 CDT</h1>
       <h3>
-        <a href="https://www.vrbo.com/3101128" target="_blank"
-          >Venue: Blooming Grove</a
+        <a
+          href="https://www.staytexas.com/rentals/oakridge-ranch"
+          target="_blank"
+          >Venue: Oakridge Ranch</a
         >
       </h3>
       <div class="time" id="time">
@@ -173,8 +175,8 @@
     <div class="images">
       <img src="scorpion01.png" alt="scorpion" />
       <img src="weedwater01.png" alt="weedwater" />
-      <img src="lbp2024.png" alt="LBP 2025" />
-      <img src="lbp2024.png" alt="LBP 2025" />
+      <img src="ribs.png" alt="pool ribs" />
+      <img src="carrollton.png" alt="carrollton" />
       <img src="lbp2024.png" alt="LBP 2025" />
     </div>
 
@@ -184,8 +186,8 @@
     <script>
       function updateCountdown() {
         const now = new Date();
-        const startDate = new Date("August 7, 2025 15:00:00");
-        const endDate = new Date("August 10, 2025 11:00:00");
+        const startDate = new Date("July 9, 2026 15:00:00");
+        const endDate = new Date("July 12, 2026 11:00:00");
 
         if (startDate <= now && now <= endDate) {
           document.getElementById("status").textContent = "It's happening!";
@@ -248,6 +250,8 @@
           "./lbp2024.png",
           "./weedwater01.png",
           "./scorpion01.png",
+          "./ribs.png",
+          "./carrollton.png",
         ];
 
         const confettiContainer = document.getElementById("confetti");
